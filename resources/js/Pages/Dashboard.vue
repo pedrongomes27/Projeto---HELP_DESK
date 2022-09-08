@@ -1,7 +1,6 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Welcome from '@/Components/Welcome.vue';
-/*import Titulo from '@/Components/Titulo.vue';*/
 </script>
 
 <template>
@@ -17,7 +16,6 @@ import Welcome from '@/Components/Welcome.vue';
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <Welcome />
                 </div>
-                <!--<Titulo :texto="'TETSE'"/>-->
             </div>
         </div>
     </AppLayout>

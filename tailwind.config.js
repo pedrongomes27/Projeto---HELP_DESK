@@ -12,8 +12,16 @@ module.exports = {
 
     theme: {
         extend: {
+            colors: {
+              green: {
+                650: '#228B22',
+                850: '#015F01',
+              },
+            }
+        },
+        extend: {
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                sans: ['Titillium Web', ...defaultTheme.fontFamily.sans],
             },
         },
     },

@@ -46,7 +46,7 @@ defineProps({
                         <div class="flex items-center">
                             <img src="../../img/estabelecimento.png" width="32" height="32"/>
                             <div class="ml-4 text-lg leading-7 font-semibold">
-                                <a href="/estabelecimento" class="underline text-gray-900 dark:text-white">Estabelecimento</a>
+                                <a href="/estabelecimento" class="underline text-gray-900 dark:text-white">Estabelecimentos</a>
                             </div>
                         </div>
 

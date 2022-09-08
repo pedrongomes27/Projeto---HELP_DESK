@@ -43,7 +43,7 @@ const logout = () => {
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('dashboard')">
-                                    <JetApplicationMark class="block h-9 w-auto" />
+                                    <img class="block h-9 w-auto" src="https://saudecaruaru.pe.gov.br/site/wp-content/uploads/2021/01/cropped-logo_prefeitura.png"/>
                                 </Link>
                             </div>
 
@@ -52,6 +52,13 @@ const logout = () => {
                                 <JetNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </JetNavLink>
+                                <JetNavLink :href="route('permission.index')" :active="route().current('permission.index')">
+                                    Permissions
+                                </JetNavLink>
+                                <JetNavLink :href="route('estabelecimento.index')" :active="route().current('estabelecimento.index')">
+                                    Estabelecimentos
+                                </JetNavLink>
+                                
                             </div>
                         </div>
 
@@ -211,6 +218,9 @@ const logout = () => {
                         <JetResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
                         </JetResponsiveNavLink>
+                        <BreezeResponsiveNavLink :href="route('permission.index')" :active="route().current('permission.index')">
+                            Permissions
+                        </BreezeResponsiveNavLink>
                     </div>
 
                     <!-- Responsive Settings Options -->
