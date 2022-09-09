@@ -1,12 +1,12 @@
 <template>
-  <AppLayout title="Estabelecimentos">
+  <!-- <AppLayout title="Estabelecimentos">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
         Estabelecimentos
       </h2>
     </template>
 
-    <!-- TABELA RESPONSIVA -->
+    TABELA RESPONSIVA
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-4 py-4">
@@ -15,7 +15,7 @@
               <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="overflow-x-auto">
                   <table class="min-w-full">
-                    <!-- COLUNAS   -->
+                    COLUNAS  
                     <thead class="border-b bg-green-700">
                       <tr>
                         <th
@@ -28,7 +28,7 @@
                         </th>
                       </tr>
                     </thead>
-                    <!-- LINHAS -->
+                    LINHAS
                     <tbody>
                       <tr
                         v-for="(data, index) in data"
@@ -59,7 +59,7 @@
               <div class="fixed inset-0 transition-opacity">
                 <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
               </div>
-              <!-- This element is to trick the browser into centering the modal contents. -->
+              This element is to trick the browser into centering the modal contents.
               <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>​
               <div
                 class="inline-blockalign-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
@@ -73,24 +73,38 @@
         </div>
       </div>
     </div>
+  </AppLayout> -->
+
+  <AppLayout title="Estabelecimentos">
+    <template #header>
+      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        Estabelecimentos
+      </h2>
+    </template>
+    <DataTable :data="dbData"/>
   </AppLayout>
+  
 </template>
 
 <script>
+import DataTable from "@/Components/DataTable.vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
+
 
 export default {
   components: {
+    DataTable,
     AppLayout,
   },
-  props: ["data"],
+  props: ["dbData"],
   data() {
     return {
-      keys: Object.keys(this.data[0]),
+      keys: Object.keys(this.dbData[0]),
     };
   },
 };
 </script>
 
-<style lang="">
+<style>
+
 </style>

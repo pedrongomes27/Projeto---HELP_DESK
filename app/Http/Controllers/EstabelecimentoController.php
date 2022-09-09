@@ -15,9 +15,10 @@ class EstabelecimentoController extends Controller
      */
     public function index()
     {
-        $data = Estabelecimento::all();
-        return Inertia::render('DataBase', [
-            "data" => $data,
+        $dbData = Estabelecimento::all();
+
+        return Inertia::render('Estabelecimento', [
+            "dbData" => $dbData,
         ]);
     }
 

@@ -1,12 +1,5 @@
 <script setup>
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3"
-import {
-  mdiAccountKey,
-  mdiPlus,
-  mdiSquareEditOutline,
-  mdiTrashCan,
-  mdiAlertBoxOutline,
-} from "@mdi/js"
 import LayoutAuthenticated from "@/Layouts/LayoutAuthenticated.vue"
 import SectionMain from "@/Components/SectionMain.vue"
 import SectionTitleLineWithButton from "@/Components/SectionTitleLineWithButton.vue"

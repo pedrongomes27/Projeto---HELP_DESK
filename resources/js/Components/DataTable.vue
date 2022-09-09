@@ -1,9 +1,9 @@
-<script setup>
-    import AppLayout from "@/Layouts/AppLayout.vue";
+<script>
+    // import AppLayout from "@/Layouts/AppLayout.vue";
 
-    defineProps({
-    title: String,
-    });
+    // defineProps({
+    // title: String,
+    // });
 
     // export default {
   
@@ -15,19 +15,25 @@
     // },
     // };
     
+    export default {
+        name: "DataTable",
+        data() {
+            return {
+                keys: Object.keys(this.data[0]),
+            };
+        },
+        props: ["data"], title: String,
+    };
 
 </script>
 
 <style>
     
-</style>template
+</style>
 <template>
-    <AppLayout :title="title">
-        <template #header>
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ title}}
-        </h2>
-        </template>
+    <!-- <AppLayout> -->
+        <!-- <template #header>
+        </template> -->
 
         <!-- TABELA RESPONSIVA -->
         <div class="py-12">
@@ -96,6 +102,6 @@
             </div>
             </div>
         </div>
-</AppLayout>
+<!-- </AppLayout> -->
 
 </template>

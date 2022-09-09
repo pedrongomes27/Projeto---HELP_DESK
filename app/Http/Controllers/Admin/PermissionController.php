@@ -29,7 +29,7 @@ class PermissionController extends Controller
         $permissions = (new Permission)->newQuery();
 
         if (request()->has('search')) {
-            $permissions->where('name', 'Like', '%' . request()->input('search') . '%');
+            $permissions->where('name', 'Like', '%'.request()->input('search').'%');
         }
 
         if (request()->query('sort')) {
@@ -44,9 +44,17 @@ class PermissionController extends Controller
             $permissions->latest();
         }
 
-        $permissions = $permissions->paginate(5)->onEachSide(2);
+        $permissions = $permissions->paginate(5)->onEachSide(2)->appends(request()->query());
 
-        return view('admin.permission.index', compact('permissions'));
+        return Inertia::render('Admin/Permission/Index', [
+            'permissions' => $permissions,
+            'filters' => request()->all('search'),
+            'can' => [
+                'create' => Auth::user()->can('permission create'),
+                'edit' => Auth::user()->can('permission edit'),
+                'delete' => Auth::user()->can('permission delete'),
+            ]
+        ]);
     }
 
     /**
