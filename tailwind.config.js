@@ -11,17 +11,17 @@ module.exports = {
     ],
 
     theme: {
-        extend: {
+        extend:{
             colors: {
-              green: {
-                650: '#228B22',
-                850: '#015F01',
-              },
-            }
-        },
-        extend: {
+                'green-header':'#228B22',
+                'green-nav':'#015F01',
+                'yellow-butt': '#E0A800',
+            },
+            
             fontFamily: {
-                sans: ['Titillium Web', ...defaultTheme.fontFamily.sans],
+                "roboto": ['Roboto Slab', 'serif'],
+                "titillium": ['Titillium Web', 'sans-serif'],
+                "caecilia": ['Caecilia LT Pro', 'sans-serif']
             },
         },
     },

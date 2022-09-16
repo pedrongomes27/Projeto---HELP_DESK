@@ -1,3 +1,22 @@
+<script>
+import DataTable from "@/Components/DataTable.vue";
+import AppLayout from "@/Layouts/AppLayout.vue";
+
+
+export default {
+  components: {
+    DataTable,
+    AppLayout,
+  },
+  props: ["dbData"],
+  data() {
+    return {
+      keys: Object.keys(this.dbData[0]),
+    };
+  },
+};
+</script>
+
 <template>
   <!-- <AppLayout title="Estabelecimentos">
     <template #header>
@@ -75,35 +94,18 @@
     </div>
   </AppLayout> -->
 
-  <AppLayout title="Estabelecimentos">
+  <AppLayout title="Estabelecimentos" page="ESTABELECIMENTOS">
     <template #header>
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Estabelecimentos
-      </h2>
+      <!--  -->
     </template>
-    <DataTable :data="dbData"/>
+
+    <template #content> 
+      <DataTable :data="dbData"/>
+    </template>
   </AppLayout>
   
 </template>
 
-<script>
-import DataTable from "@/Components/DataTable.vue";
-import AppLayout from "@/Layouts/AppLayout.vue";
-
-
-export default {
-  components: {
-    DataTable,
-    AppLayout,
-  },
-  props: ["dbData"],
-  data() {
-    return {
-      keys: Object.keys(this.dbData[0]),
-    };
-  },
-};
-</script>
 
 <style>
 

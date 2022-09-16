@@ -1,20 +1,4 @@
-<script>
-    // import AppLayout from "@/Layouts/AppLayout.vue";
-
-    // defineProps({
-    // title: String,
-    // });
-
-    // export default {
-  
-    // props: ["data"],
-    // data() {
-    //     return {
-    //     keys: Object.keys(this.data[0]),
-    //     };
-    // },
-    // };
-    
+<script>    
     export default {
         name: "DataTable",
         data() {
@@ -45,16 +29,35 @@
                     <div class="overflow-x-auto">
                         <table class="min-w-full">
                         <!-- COLUNAS   -->
-                        <thead class="border-b bg-green-700">
+                        <thead class="border-b bg-green-nav">
                             <tr>
-                            <th
-                                scope="col"
-                                class="border text-sm font-medium text-white px-6 py-4 text-left"
-                                v-for="(column, index) in keys"
-                                :key="index"
-                            >
-                                {{ column }}
-                            </th>
+                                <th scope="col" class="border text-sm text-white px-6 py-4 text-left">
+                                    ID
+                                </th>
+                                <th scope="col" class="border text-sm text-white px-6 py-4 text-left">
+                                    Nome
+                                </th>
+                                <th scope="col" class="border text-sm text-white px-6 py-4 text-left">
+                                    Classificação-ID
+                                </th>
+                                <th scope="col" class="border text-sm text-white px-6 py-4 text-left">
+                                    CNES
+                                </th>
+                                <th scope="col" class="border text-sm text-white px-6 py-4 text-left">
+                                    Tipo-ID
+                                </th>
+                                <th scope="col" class="border text-sm text-white px-6 py-4 text-left">
+                                    Cidade-ID
+                                </th>
+                                <th scope="col" class="border text-sm text-white px-6 py-4 text-left">
+                                    Latitude
+                                </th>
+                                <th scope="col" class="border text-sm text-white px-6 py-4 text-left">
+                                    Longitude
+                                </th>
+                                <th scope="col" class="border text-sm text-white px-6 py-4 text-left">
+                                    Ações
+                                </th>
                             </tr>
                         </thead>
                         <!-- LINHAS -->
@@ -65,12 +68,38 @@
                             :data-table-id="data['id']"
                             >
                             <td
-                                class="border text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                                class="border text-sm text-gray-900 px-6 py-4 text-left"
                                 v-for="(key, index) in keys"
                                 :key="index"
                             >
                                 {{ data[key] }}
                             </td>
+                            <td class="border text-sm text-gray-900 px-6 py-4 text-left">
+                                <div >
+                                    <button
+                                        @click="deleteData(data, delete_route)"
+                                        class="rounded bg-danger p-2 text-white text-xs"
+                                    >
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+        
+                                    <button
+                                        :data-bs-target="`#${edit_target}`"
+                                        data-bs-toggle="modal"
+                                        :data-id="data['id']"
+                                        :data-index="index"
+                                        class="rounded bg-primary p-2 mx-2 text-white text-xs"
+                                    >
+                                        <i class="fa-solid fa-pen"></i>
+                                    </button>
+        
+                                    <a :href="`${delete_route}/${data['id']}`"
+                                        class="rounded bg-success p-2 text-white text-xs"
+                                    >
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                </div>
+                            </td>        
                             </tr>
                         </tbody>
                         </table>

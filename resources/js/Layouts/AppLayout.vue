@@ -11,6 +11,7 @@ import JetResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 
 defineProps({
     title: String,
+    page: String,
 });
 
 const showingNavigationDropdown = ref(false);
@@ -32,33 +33,31 @@ const logout = () => {
     <div>
         <Head :title="title" />
 
-        <JetBanner />
+        <!-- FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Titillium+Web&display=swap" rel="stylesheet">
+        <link href="http://fonts.cdnfonts.com/css/caecilia-lt-pro" rel="stylesheet">
 
-        <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
+        <JetBanner />
+        <!-- NAV BAR -->
+        <div class="min-h-screen font-titillium">
+            <nav class="bg-green-nav">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
                         <div class="flex">
-                            <!-- Logo -->
-                            <div class="shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
-                                    <img class="block h-9 w-auto" src="https://saudecaruaru.pe.gov.br/site/wp-content/uploads/2021/01/cropped-logo_prefeitura.png"/>
-                                </Link>
-                            </div>
-
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <JetNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </JetNavLink>
                                 <JetNavLink :href="route('permission.index')" :active="route().current('permission.index')">
-                                    Permissions
+                                    Permissões
                                 </JetNavLink>
                                 <JetNavLink :href="route('estabelecimento.index')" :active="route().current('estabelecimento.index')">
                                     Estabelecimentos
                                 </JetNavLink>
-                                
                             </div>
                         </div>
 
@@ -133,7 +132,7 @@ const logout = () => {
                             </div>
 
                             <!-- Settings Dropdown -->
-                            <div class="ml-3 relative">
+                            <div class="ml-3 relative px-4 sm:px-6 lg:px-8">
                                 <JetDropdown align="right" width="48">
                                     <template #trigger>
                                         <button v-if="$page.props.jetstream.managesProfilePhotos" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
@@ -141,7 +140,7 @@ const logout = () => {
                                         </button>
 
                                         <span v-else class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
+                                            <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-green-header bg-white hover:text-gray-700 focus:outline-none transition">
                                                 {{ $page.props.user.name }}
 
                                                 <svg
@@ -158,24 +157,24 @@ const logout = () => {
 
                                     <template #content>
                                         <!-- Account Management -->
-                                        <div class="block px-4 py-2 text-xs text-gray-400">
-                                            Manage Account
+                                        <div class="block px-4 py-2 text-xs font-semibold text-gray-400">
+                                            Gerenciamento de conta
                                         </div>
 
                                         <JetDropdownLink :href="route('profile.show')">
-                                            Profile
+                                            Perfil
                                         </JetDropdownLink>
 
                                         <JetDropdownLink v-if="$page.props.jetstream.hasApiFeatures" :href="route('api-tokens.index')">
                                             API Tokens
                                         </JetDropdownLink>
 
-                                        <div class="border-t border-gray-100" />
+                                        <div class="border-t border-gray-200" />
 
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
                                             <JetDropdownLink as="button">
-                                                Log Out
+                                                Sair
                                             </JetDropdownLink>
                                         </form>
                                     </template>
@@ -218,9 +217,12 @@ const logout = () => {
                         <JetResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
                         </JetResponsiveNavLink>
-                        <BreezeResponsiveNavLink :href="route('permission.index')" :active="route().current('permission.index')">
+                        <JetResponsiveNavLink :href="route('permission.index')" :active="route().current('permission.index')">
                             Permissions
-                        </BreezeResponsiveNavLink>
+                        </JetResponsiveNavLink>
+                        <JetResponsiveNavLink :href="route('estabelecimento.index')" :active="route().current('estabelecimento.index')">
+                            Estabelecimentos
+                        </JetResponsiveNavLink>
                     </div>
 
                     <!-- Responsive Settings Options -->
@@ -306,15 +308,23 @@ const logout = () => {
             </nav>
 
             <!-- Page Heading -->
-            <header v-if="$slots.header" class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <slot name="header" />
+            <header v-if="$slots.header" class="bg-green-header shadow">
+                <!-- Logo -->
+                <div class="shrink-0 flex items-center max-w-6xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+                    <Link :href="route('dashboard')">
+                        <!-- <img src="https://saudecaruaru.pe.gov.br/site/wp-content/uploads/2021/01/cropped-logo_prefeitura.png" alt="Secretaria Municipal de Saúde de Caruaru" width="58" height="75"> -->
+                        <img src="../../img/cropped-logo_prefeitura.png" alt="Secretaria Municipal de Saúde de Caruaru" width="70" >
+                    </Link>
+                    <div class="px-2 sm:px-4 lg:px-6 text-white font-caecilia text-3xl leading-tight">
+                        <span :page="page">Help Desk - {{ page }} </span>
+                        <slot name="header" />
+                    </div>
                 </div>
             </header>
 
             <!-- Page Content -->
             <main>
-                <slot />
+                <slot name="content" />
             </main>
         </div>
     </div>
