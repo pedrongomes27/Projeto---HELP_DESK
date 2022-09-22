@@ -1,18 +1,23 @@
 <script>
-import DataTable from "@/Components/DataTable.vue";
+import DataEstabelecimento from "@/Components/DataEstabelecimento.vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 
 
 export default {
   components: {
-    DataTable,
+    DataEstabelecimento,
     AppLayout,
   },
   props: ["dbData"],
   data() {
-    return {
-      keys: Object.keys(this.dbData[0]),
-    };
+    try {
+      return {
+        keys: Object.keys(this.dbData[0]),
+      };
+      
+    } catch (error) {
+      
+    }
   },
 };
 </script>
@@ -100,7 +105,7 @@ export default {
     </template>
 
     <template #content> 
-      <DataTable :data="dbData"/>
+      <DataEstabelecimento :data="dbData"/>
     </template>
   </AppLayout>
   

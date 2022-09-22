@@ -1,30 +1,35 @@
 <script>
-    import DataTable from "@/Components/DataTable.vue";
+    import DataNisCtrChamadosArea from "@/Components/DataNisCtrChamadosArea.vue";
     import AppLayout from "@/Layouts/AppLayout.vue";
     
     
     export default {
       components: {
-        DataTable,
+        DataNisCtrChamadosArea,
         AppLayout,
       },
       props: ["dbData"],
       data() {
-        return {
-          keys: Object.keys(this.dbData[0]),
-        };
+        try {
+          return {
+            keys: Object.keys(this.dbData[0]),
+          };
+          
+        } catch (error) {
+          
+        }
       },
     };
 </script>
 
 <template>
-    <AppLayout title="NisCtrChamadosAreas" page="NIS_CTR_CHAMADOS_AREA">
+    <AppLayout title="NisCtrChamadosAreas" page="NIS CTR CHAMADOS AREA">
         <template #header>
           <!--  -->
         </template>
     
         <template #content> 
-          <DataTable :data="dbData"/>
+          <DataTable v-if="error" :data="dbData"/>
         </template>
     </AppLayout>
 </template>

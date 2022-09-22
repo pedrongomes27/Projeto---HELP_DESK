@@ -1,13 +1,22 @@
-<script>    
+<script>
+import Button from '../../../vendor/laravel/jetstream/stubs/inertia/resources/js/Components/Button.vue';
+
+    
     export default {
-        name: "DataTable",
-        data() {
+    name: "DataEstabelecimento",
+    data() {
+        try {
             return {
                 keys: Object.keys(this.data[0]),
             };
-        },
-        props: ["data"], title: String,
-    };
+            
+        } catch (error) {
+            
+        }
+    },
+    props: ["data"],
+    title: String,
+};
 
 </script>
 
@@ -67,39 +76,27 @@
                             :key="index"
                             :data-table-id="data['id']"
                             >
-                            <td
-                                class="border text-sm text-gray-900 px-6 py-4 text-left"
-                                v-for="(key, index) in keys"
-                                :key="index"
-                            >
-                                {{ data[key] }}
-                            </td>
-                            <td class="border text-sm text-gray-900 px-6 py-4 text-left">
-                                <div >
-                                    <button
-                                        @click="deleteData(data, delete_route)"
-                                        class="rounded bg-danger p-2 text-white text-xs"
-                                    >
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-        
-                                    <button
-                                        :data-bs-target="`#${edit_target}`"
-                                        data-bs-toggle="modal"
-                                        :data-id="data['id']"
-                                        :data-index="index"
-                                        class="rounded bg-primary p-2 mx-2 text-white text-xs"
-                                    >
-                                        <i class="fa-solid fa-pen"></i>
-                                    </button>
-        
-                                    <a :href="`${delete_route}/${data['id']}`"
-                                        class="rounded bg-success p-2 text-white text-xs"
-                                    >
-                                        <i class="fa-solid fa-eye"></i>
-                                    </a>
-                                </div>
-                            </td>        
+                                <td
+                                    class="border text-sm text-gray-900 px-6 py-4 text-left"
+                                    v-for="(key, index) in keys"
+                                    :key="index"
+                                >
+                                    {{ data[key] }}
+                                </td>
+                                <td class="border text-sm px-6 py-4 text-left">
+                                        <button
+                                            class="inline-block px-2 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                                        >
+                                            Editar
+                                        </button>
+                                        <div class="py-0.5"/>
+                                        <button
+                                            class="inline-block px-2 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
+                                            @click="delete(data.id)"
+                                            >
+                                            Excluir
+                                        </button>
+                                </td>        
                             </tr>
                         </tbody>
                         </table>
