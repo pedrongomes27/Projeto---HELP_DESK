@@ -16,6 +16,13 @@ import Button from '../../../vendor/laravel/jetstream/stubs/inertia/resources/js
     },
     props: ["data"],
     title: String,
+    methods: {
+        deleteData(data) {
+            if (!confirm('Are you sure want to remove?')) return;
+            data._method = 'DELETE';
+            this.$inertia.post('/estabelecimento/' + data.id, data)
+        },
+    },
 };
 
 </script>
@@ -85,14 +92,14 @@ import Button from '../../../vendor/laravel/jetstream/stubs/inertia/resources/js
                                 </td>
                                 <td class="border text-sm px-6 py-4 text-left">
                                         <button
-                                            class="inline-block px-2 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                                            class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
                                         >
                                             Editar
                                         </button>
                                         <div class="py-0.5"/>
                                         <button
-                                            class="inline-block px-2 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
-                                            @click="delete(data.id)"
+                                            class="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded"
+                                            @click="deleteData(data)"
                                             >
                                             Excluir
                                         </button>

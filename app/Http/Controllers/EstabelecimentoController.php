@@ -85,7 +85,7 @@ class EstabelecimentoController extends Controller
      */
     public function destroy(Estabelecimento $estabelecimento)
     {
-        $estabelecimento->deletedata();
+        $estabelecimento->delete();
 
         return redirect()->route('estabelecimento.index');
     }
