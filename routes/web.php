@@ -1,10 +1,11 @@
 <?php
 
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\EstabelecimentoController;
 use App\Http\Controllers\NisCtrChamadosAreaController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,4 +60,12 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::resource('/chamados-area', NisCtrChamadosAreaController::class);
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::resource('/users', UserController::class);
 });

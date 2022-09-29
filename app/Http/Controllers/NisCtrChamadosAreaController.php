@@ -8,11 +8,6 @@ use Inertia\Inertia;
 
 class NisCtrChamadosAreaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $dbData = NisCtrChamadosArea::all();

@@ -15,23 +15,22 @@
             keys: Object.keys(this.dbData[0]),
           };
           
-        } catch (error) {
-          
-        }
+        } catch (error) { }
+
       },
     };
 </script>
 
 <template>
-    <AppLayout title="NisCtrChamadosAreas" page="NIS CTR CHAMADOS AREA">
-        <template #header>
-          <!--  -->
-        </template>
-    
-        <template #content> 
-          <DataTable v-if="error" :data="dbData"/>
-        </template>
-    </AppLayout>
+  <AppLayout title="NisCtrChamadosAreas" page="NIS CTR CHAMADOS AREA">
+    <template #header>
+      <!--  -->
+    </template>
+
+    <template #content> 
+      <DataNisCtrChamadosArea v-if="error" :data="dbData"/>
+    </template>
+  </AppLayout>
 </template>
 
 
