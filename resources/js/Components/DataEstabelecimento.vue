@@ -1,12 +1,14 @@
 <script>
     import Button from '../../../vendor/laravel/jetstream/stubs/inertia/resources/js/Components/Button.vue';
-    import Pagination from "@/Components/Admin/Pagination.vue"
+    import pagination from "@/Components/Pagination.vue"
+    import JetActionMessage from '@/Components/ActionMessage.vue';
+
 
     
     export default {
         name: "DataEstabelecimento",
         components: {
-            Button, Pagination
+            Button, pagination, JetActionMessage,
         },
         data() {
             try {
@@ -75,6 +77,7 @@
                 this.$inertia.post('/estabelecimento/' + data.id, data)
                 this.reset();
                 this.closeModal();
+                
             },
         },
     };
@@ -180,9 +183,7 @@
                                         </tbody>
                                     </table>
 
-                                    <!-- <div class="py-4">
-                                        <Pagination :data='data' />
-                                    </div> -->
+                                    <pagination :links="data.links"></pagination>
     
                                     <div class="fixed z-10 inset-0 overflow-y-auto ease-out duration-400" v-if="isOpen">
                                         <div

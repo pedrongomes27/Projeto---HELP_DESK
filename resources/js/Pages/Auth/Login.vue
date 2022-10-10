@@ -82,7 +82,7 @@ const submit = () => {
                         Não possui uma conta?
                     </Link>
     
-                    <JetButton class="ml-4 bg-green-header hover:bg-green-nav" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    <JetButton class="ml-4 text-white bg-green-header hover:bg-green-nav" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                         Log in
                     </JetButton>
                 </div>

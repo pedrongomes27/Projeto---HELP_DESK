@@ -12,7 +12,7 @@ class EstabelecimentoController extends Controller
 {
     public function index()
     {
-        $dbData = Estabelecimento::all();
+        $dbData = Estabelecimento::paginate(5)->all();
 
         return Inertia::render('Estabelecimento', [
             "dbData" => $dbData,
